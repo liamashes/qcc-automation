@@ -56,12 +56,30 @@
 ![日志](./image/log.png)
 
 ## d-3、基本信息_工商信息
+    原始信息
+![原始-基本信息-工商信息](./image/src_basic_info.png)
+
+    采集的信息
 ![基本信息-工商信息](./image/basic-info-mysql.png)
 
 ## d-4、经营风险_股权质押_质押明细
+    原始信息-第一页
+![原始-经营风险-股权质押-质押明细-第1页](./image/src-s-pledge-detail-1.png)
+
+    原始信息-第二页
+![原始-经营风险-股权质押-质押明细-第2页](./image/src-s-pledge-detail-2.png)
+
+    采集的信息
 ![经营风险-股权质押-质押明细](./image/s-pledge-detail-mysql.png)
 
 ## d-5、经营风险_股权出质
+    原始信息-当前信息
+![原始-经营风险-股权出质-当前](./image/src-pledge-cur.png)
+
+    原始信息-历史信息
+![原始-经营风险-股权出质-历史](./image/src-pledge-history.png)
+
+    采集的信息
 ![经营风险-股权出质](./image/pledge-mysql.png)
 
 
