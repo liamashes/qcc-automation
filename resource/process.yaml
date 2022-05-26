@@ -1,0 +1,43 @@
+persistence:
+    database:
+        mysql:
+            db: qcc
+            user: root
+            pass: root
+            port: 3306
+            host: localhost
+
+service:
+    chrome_server:
+        script:
+            exe_path: "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome"
+            instance_dir: "/opt/workplace/chrome"
+
+param:
+    job:
+        data_refresh_interval: 1
+        page_load_interval: 3
+        operate_interval: 0.7
+        job_interval: 2
+        tolerance: 2
+        print_result: False
+        retry_times: 5
+        retry_interval: 10
+        task_dict: td_all_task # td_all_task td_unit_task
+        max_page: 20
+
+    utils:
+        log:
+            method_name_len: 42
+            debug: False
+            show_image_process: False
+            save_other_match: False
+
+    task:
+        process_interval: 2
+        run_config: rc_vip_account
+        company_group:  company_group/cg_function_test # cg_function_test cg_frequent_test cg_formal_test
+        # 任务类型，1：仅浏览器；2：仅job；3：监控进程；12：浏览器和监控任务；123：所有任务
+        mode: 2
+        monitor_interval: 30
+

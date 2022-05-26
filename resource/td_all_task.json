@@ -1,0 +1,266 @@
+{
+    "基本信息": [
+        {
+            "task_name": "工商信息",
+            "task_list": [
+                {
+                    "task_type": "3",
+                    "ele_id": "cominfo",
+                    "mid_xpath": "//table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "items": ["统一社会信用代码", "企业名称", "法定代表人", "登记状态", "成立日期", "注册资本", "实缴资本", "核准日期",
+                              "组织机构代码", "工商注册号", "纳税人识别号", "企业类型", "营业期限", "纳税人资质", "所属行业", "所属地区",
+                              "登记机关", "人员规模", "参保人数", "曾用名", "英文名", "进出口企业代码", "注册地址", "最新年报地址", "经营范围",
+                              "地址", "举办单位", "经费来源", "开办资金", "宗旨和业务范围", "负责人", "有效期"],
+                    "data_filter": {
+                        "equal": [">", "趋势图", "附近企业", "<", ""],
+                        "2": ["关联[0-9]+家企业"],
+                        "SUBSTR": []
+                    },
+                    "column_names": null,
+                    "db_info": {
+                        "item_fields": ["Unified_Social_Credit_Code", "Company_Name", "Legal_Representative",
+                                        "Registration_Status", "Date_of_Establishment", "Registered_Capital",
+                                        "Paid_In_Capital", "Approval_Date", "Organization_code",
+                                        "industrial_and_commercial_registration_number",
+                                        "taxpayer_identification_number", "business_type", "business_period",
+                                        "taxpayer_qualification", "industry", "region", "Registration_Authority",
+                                        "Scale_of_Personnel", "Number_of_Insured_Persons", "Former_Name",
+                                        "English_Name", "Import_and_Export_Enterprise_Code", "Registered_Address",
+                                        "Address_of_Latest_Annual_Report", "Business_Scope", "Address", "Organizer",
+                                        "Funding_Source", "Start_up_Funds", "Purpose_and_Business_Scope",
+                                        "Person_in_Charge", "Validity_Period"],
+                        "column_fields": null,
+                        "table_name": "qcc_bai_business_information"
+                    }
+                }
+            ]
+        }
+    ],
+    "经营风险": [
+        {
+            "task_name": "债务债权",
+            "task_list": [
+                {
+                    "task_type": "3",
+                    "ele_id": "debtInfo",
+                    "mid_xpath": "//table/tbody/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "items": ["自身债务", "自身债权", "关联方债务/债权", "历史债务/债权"],
+                    "data_filter": {
+                        "equal": ["", "详情", "查看详情"],
+                        "regex": [],
+                        "substr": []
+                    },
+                    "column_names": ["条数", "概述"],
+                    "db_info": {
+                        "item_fields": ["self_debt", "own_claim", "related_party_debt_claim", "historical_debt_claim"],
+                        "column_fields": ["count", "desc"],
+                        "table_name": "qcc_bur_debt_info"
+                    }
+                }
+            ]
+        },
+        {
+            "task_name": "股权出质",
+            "task_list": [
+                {
+                    "task_type": "2",
+                    "ele_id": "pledgelist",
+                    "div_class_type": "tablist",
+                    "item_count": 9,
+                    "element_x": "//table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "db_info": {
+                        "item_fields": ["serial_number", "registration_number", "Pledgor",
+                                        "The_target_company_of_the_pledged_equity", "pledgee",
+                                        "Amount_of_pledged_shares", "Registration_Date", "state", "operate", "tag"],
+                        "table_name": "qcc_bur_pledge"
+                    }
+                }
+            ]
+        },
+        {
+            "task_name": "股权质押",
+            "task_list": [
+                {
+                    "task_type": "3",
+                    "ele_id": "spledge",
+                    "mid_xpath": "/div/table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "items": ["股票代码：", "股票简称：", "质押比例：", "质押股数(股)：", "质押市值(元)：", "质押笔数：", "无限售股质押数(股)：",
+                              "限售股质押数(股)：", "近一年涨跌幅：", "所属行业："],
+                    "data_filter": null,
+                    "column_names": null,
+                    "db_info": {
+                        "item_fields": ["stock_code", "stock_abbreviation", "pledge_ratio", "Number_of_pledged_shares",
+                                        "Pledged_market_value", "Number_of_pledges",
+                                        "Number_of_pledged_shares_without_restriction",
+                                        "Pledged_number_of_restricted_shares", "Changes_in_the_past_year", "Industry"],
+                        "column_fields": null,
+                        "table_name": "qcc_bur_s_pledge_ratio"
+                    }
+                },
+                {
+                    "task_type": "1",
+                    "ele_id": "spledge",
+                    "div_class_type": "sublist",
+                    "item_count": 9,
+                    "element_x": "/div/table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "db_info": {
+                        "item_fields": ["serial_number", "pledgee", "The_pledgee_participates_in_the_company",
+                                        "pledgor", "Total_number_of_pledged_shares", "Market_value_of_pledged_shares",
+                                        "state", "Announcement_date", "operate"],
+                        "table_name": "qcc_bur_s_pledge_detail"
+                    }
+                }
+            ]
+        },
+        {
+            "task_name": "税收违法",
+            "task_list": [
+                {
+                    "task_type": "1",
+                    "ele_id": "taxillegallist",
+                    "div_class_type": "tablist",
+                    "item_count": 7,
+                    "element_x": "//table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "db_info": {
+                        "item_fields": ["serial_number", "release_date", "Affiliated_tax_authority",
+                                        "the_nature_of_the_case", "Main_illegal_facts", "Legal_basis_and_punishment",
+                                        "operate"],
+                        "table_name": "qcc_bur_tax_illegal"
+                    }
+                }
+            ]
+        },
+        {
+            "task_name": "动产抵押",
+            "task_list": [
+                {
+                    "task_type": "2",
+                    "ele_id": "mpledgelist",
+                    "div_class_type": "tablist",
+                    "item_count": 10,
+                    "element_x": "//table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "db_info": {
+                        "item_fields": ["serial_number", "registration_number", "state", "Mortgagor", "mortgagee",
+                                        "Attribution_of_ownership_or_right_to_use",
+                                        "The_debtors_time_limit_for_paying_the_debt",
+                                        "Amount_of_guaranteed_main_creditors_rights", "Registration_Date", "operate",
+                                        "tag"],
+                        "table_name": "qcc_bur_m_pledge"
+                    }
+                }
+            ]
+        },
+        {
+            "task_name": "清算信息",
+            "task_list": [
+                {
+                    "task_type": "3",
+                    "ele_id": "liquidationlist",
+                    "mid_xpath": "//table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "items": ["清算组负责人", "清算组成员"],
+                    "data_filter": null,
+                    "column_names": null,
+                    "db_info": {
+                        "item_fields": ["lqd_group_head", "lqd_group_member"],
+                        "column_fields": null,
+                        "table_name": "qcc_bur_liquidation"
+                    }
+                }
+            ]
+        },
+        {
+            "task_name": "土地抵押",
+            "task_list": [
+                {
+                    "task_type": "1",
+                    "ele_id": "landmortgagelist",
+                    "div_class_type": "tablist",
+                    "item_count": 8,
+                    "element_x": "//table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "db_info": {
+                        "item_fields": ["serial_number", "land_sits", "Mortgagor", "mortgagee",
+                                        "Mortgage_start_and_end_date", "Mortgage_area", "Mortgage_amount", "operate"],
+                        "table_name": "qcc_bur_land_mortgage"
+                    }
+                }
+            ]
+        },
+        {
+            "task_name": "担保明细",
+            "task_list": [
+                {
+                    "task_type": "2",
+                    "ele_id": "guarantorinfo",
+                    "div_class_type": "tablist",
+                    "item_count": 7,
+                    "element_x": "//table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "db_info": {
+                        "item_fields": ["serial_number", "guaranteed_party", "guarantor", "Guarantee_method",
+                                        "Guarantee_amount", "Announcement_date", "operate", "tag"],
+                        "table_name": "qcc_bur_guarantor"
+                    }
+                }
+            ]
+        }
+    ],
+    "经营信息": [
+        {
+            "task_name": "信用评价",
+            "task_list": [
+                {
+                    "task_type": "1",
+                    "ele_id": "creditrate",
+                    "div_class_type": "app-ntable",
+                    "item_count": 5,
+                    "element_x": "//table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "db_info": {
+                        "item_fields": ["serial_number", "Evaluation_year", "Taxpayer_Identification_Number",
+                                        "tax_credit_rating", "Evaluation_unit"],
+                        "table_name": "qcc_bui_credit_rate"
+                    }
+                }
+            ]
+        },
+        {
+            "task_name": "一般纳税人",
+            "task_list": [
+                {
+                    "task_type": "1",
+                    "ele_id": "taxpayerlist",
+                    "div_class_type": "app-ntable",
+                    "item_count": 6,
+                    "element_x": "//table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "db_info": {
+                        "item_fields": ["serial_number", "Taxpayer_Identification_Number",
+                                        "Taxpayer_Eligibility_Type", "Tax_authorities", "Valid_from", "Expiry_date"],
+                        "table_name": "qcc_bui_tax_player"
+                    }
+                }
+            ]
+        }
+    ]
+}

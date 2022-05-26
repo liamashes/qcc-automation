@@ -1,0 +1,14 @@
+{
+  "instance_2": {
+    "chrome-port": "XXXX",
+    "username": "XXXXXXXXXX",
+    "password": "XXXXXXXXXX",
+    "is_vip": true
+  },
+  "instance_3": {
+    "chrome-port": "XXXX",
+    "username": "XXXXXXXXXX",
+    "password": "XXXXXXXXXX",
+    "is_vip": true
+  }
+}

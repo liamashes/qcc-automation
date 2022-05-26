@@ -1,0 +1,26 @@
+{
+    "经营风险": [
+        {
+            "task_name": "动产抵押",
+            "task_list": [
+                {
+                    "task_type": "2",
+                    "ele_id": "mpledgelist",
+                    "div_class_type": "tablist",
+                    "item_count": 10,
+                    "element_x": "//table/tr/*[local-name()='td' or local-name()='th']",
+                    "source_deli": "###",
+                    "target_deli": "###",
+                    "db_info": {
+                        "item_fields": ["serial_number", "registration_number", "state", "Mortgagor", "mortgagee",
+                                        "Attribution_of_ownership_or_right_to_use",
+                                        "The_debtors_time_limit_for_paying_the_debt",
+                                        "Amount_of_guaranteed_main_creditors_rights", "Registration_Date", "operate",
+                                        "tag"],
+                        "table_name": "qcc_bur_m_pledge"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+  "function test": {
+    "group_1": "default",
+    "group_2": "default",
+    "group_3": "FU_T",
+    "is_valid": true
+  }
+}
